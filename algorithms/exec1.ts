@@ -9,20 +9,22 @@ option: string = '';
       return value -1;
     }
 
+    resultDisplay():void {
+        if(this.option.toLowerCase() == 'a') {
+            this.number = +this.keyboard('Digite um valor: ');
+            let result = this.decreaseTheValue(this.number);
+            console.log('Resultado:', result);
+        }
+    }
+
     menu(){
-         while(this.option != 's') {
+         while(this.option.toLowerCase() != 's') {
             console.log('**************************************************');
             console.log('|A. Digite um número para ver seu antecessor     |');
             console.log('|S. Digite S para sair                           |');
             console.log('**************************************************');
-            
             this.option = this.keyboard('Escolha uma ação: ');
-
-            if(this.option == 'a') {
-                this.number = +this.keyboard('Digite um valor: ');
-                let result = this.decreaseTheValue(this.number);
-                console.log('Resultado:', result);
-            }
+            this.resultDisplay();
          }
     }
 }
