@@ -9,16 +9,17 @@ class SalaryAdjustment{
     }
 
     calculateNewSalary(): void {
-        const newSalary = ( this.adjustmentSalary / 100 ) * this.currentSalary
+        const percentageSalary = ( this.adjustmentSalary  /  100 ) * this.currentSalary 
+        const newSalary = percentageSalary  +  this.currentSalary;
         
-        console.log( `O valor do novo salário reajustado é: ${newSalary.toFixed(2)}`);
+        console.log( `O valor do novo salário reajustado é: ${newSalary.toFixed(2)}` );
     }
 }
 
 const input = prompt();
 
-const currentSalary    =  +input( 'Digite o salário atual do funcionário: '    );
-const adjustmentSalary =  +input( 'Digite a porcentagem do reajuste salarial: ');
+const currentSalary     =  +input( 'Digite o salário atual do funcionário: '    );
+const adjustmentSalary  =  +input( 'Digite a porcentagem do reajuste salarial: ');
 
 const salaryAdjustment  =  new SalaryAdjustment(currentSalary, adjustmentSalary);
 
