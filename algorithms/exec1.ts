@@ -1,21 +1,33 @@
 import prompt from "prompt-sync";
 
-const keyboard = prompt();
-let option = '';
+class NumberProcessor {
+    private keyboard: any;
 
-function decreaseTheValue(value: number): number {
-    return value - 1;
-}
+    constructor() {
+        this.keyboard = prompt();
+    }
 
-while (option.toLowerCase() !== 's') {
-    console.log('**************************************************');
-    console.log('|A. Digite um número para ver seu antecessor     |');
-    console.log('|S. Digite S para sair                           |');
-    console.log('**************************************************');
-    option = keyboard('Escolha uma ação: ');
-    if (option.toLowerCase() === 'a') {
-        const number = +keyboard('Digite um valor: ');
-        const result = decreaseTheValue(number);
-        console.log('Resultado:', result);
+    private decreaseValue(value: number): number {
+        return value - 1;
+    }
+
+    public start(): void {
+        let option = '';
+        while (option.toLowerCase() !== 'e') {
+            console.log('**************************************************');
+            console.log('|A. Enter A number to see its predecessor        |');
+            console.log('|S. Enter E to exit                              |');
+            console.log('**************************************************');
+            option = this.keyboard('Choose an action: ');
+            if (option.toLowerCase() === 'a') {
+                const number = +this.keyboard('Enter a number: ');
+                const result = this.decreaseValue(number);
+                console.log('Result:', result);
+            }
+        }
     }
 }
+
+const numberProcessor = new NumberProcessor();
+numberProcessor.start();
+
